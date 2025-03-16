@@ -1,20 +1,33 @@
 import java.util.Scanner;
 
-public class TrigCalculator {
+public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         
-        System.out.print("Введіть α (у радіанах): ");
-        double alpha = scanner.nextDouble();
+        System.out.print("Введіть x: ");
+        double x = scanner.nextDouble();
         
-        double z1 = (Math.sin(2 * alpha) + Math.sin(5 * alpha) - Math.sin(3 * alpha)) /
-                    (Math.cos(alpha) + 1 - 2 * Math.pow(Math.sin(2 * alpha), 2));
+        System.out.print("Введіть b: ");
+        double b = scanner.nextDouble();
         
-        double z2 = 2 * Math.sin(alpha);
+        System.out.print("Введіть c: ");
+        double c = scanner.nextDouble();
         
-        System.out.println("z1 = " + z1);
-        System.out.println("z2 = " + z2);
+        double a = Math.sqrt(b * b + c * c);
         
+        double t;
+        
+        if (x > 0) {
+            t = (a * Math.pow(Math.sin(x), 2)) + Math.sqrt(Math.abs(Math.cos(x)));
+        } else if (x <= 0 && a != 0) {
+            t = (Math.pow(x, 2) + a * b) / a + (Math.tan(a / b));
+        } else {
+            t = 1 / a + 0.5;
+        }
+        
+        System.out.println("Результат t = " + t);
         scanner.close();
     }
 }
+
