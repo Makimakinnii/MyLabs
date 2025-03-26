@@ -5,7 +5,7 @@ public class part2 {
         double a = 2.0; // Дано
         double b = 3.0; // Дано
 
-        double maxZ = Double.NEGATIVE_INFINITY;
+        double maxZ = Double.NEGATIVE_INFINITY; //  використовується для ініціалізації змінної maxZ таким чином, щоб перше обчислене значення z завжди було більшим і оновило maxZ.
         double minZ = Double.POSITIVE_INFINITY;
         double maxX = 0, minX = 0;
 
