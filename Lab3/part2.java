@@ -1,32 +1,35 @@
+import java.util.Scanner;
+
 public class part2 {
     public static void main(String[] args) {
-        double T = 10.0; // Межі x
-        double h_x = 3.0; // Крок
-        double a = 2.0; // Дано
-        double b = 3.0; // Дано
+        Scanner sc = new Scanner(System.in);
+        double a, b, z, x, T, s;
+        
+        System.out.println("Введите a: ");
+        a = sc.nextDouble();
+        System.out.println("Введите b: "); 
+        b = sc.nextDouble();
+        System.out.println("Введите T: ");
+        T = sc.nextDouble();
+        
+        double MAX, xmax; 
+        x = -T; 
+        s = Math.cos(x + a) + Math.pow(b, 3);
+        z = Math.pow(x,5) + a * s + Math.pow(b, 3);
+        MAX = z;
+        xmax = x;
 
-        double maxZ = Double.NEGATIVE_INFINITY; //  використовується для ініціалізації змінної maxZ таким чином, щоб перше обчислене значення z завжди було більшим і оновило maxZ.
-        double minZ = Double.POSITIVE_INFINITY;
-        double maxX = 0, minX = 0;
-
-        System.out.println(" x     |  z");
-        System.out.println("----------------");
-
-        for (double x = -T; x <= T; x += h_x) {
-            double z = Math.pow(x, 3) + a + Math.pow(b, 3);
-            System.out.printf("%.2f  |  %.4f%n", x, z);
-
-            if (z > maxZ) {
-                maxZ = z;
-                maxX = x;
-            }
-            if (z < minZ) {
-                minZ = z;
-                minX = x;
+        for (x = -T; x <= T; x += 3) {  
+            s = Math.cos(x + a) + Math.pow(b, 3);
+            z = Math.pow(x, 5) + a * s + Math.pow(b, 3);
+            System.out.println("x= " + x + " z= " + z + " s= " + s);
+            
+            if (z > MAX) {
+                MAX = z;
+                xmax = x;
             }
         }
 
-        System.out.println("\nMAX z: " + maxZ + " при x = " + maxX);
-        System.out.println("MIN z: " + minZ + " при x = " + minX);
+        System.out.println("MAX= " + MAX + " xmax= " + xmax);
     }
 }
