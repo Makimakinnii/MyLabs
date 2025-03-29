@@ -1,20 +1,38 @@
+import java.util.Scanner;
+
 public class part1 {
     public static void main(String[] args) {
-        double k = 1.0;  // початкове значення
-        double l = 5.0;  // кінцеве
-        double h = 0.5;  // крок
-        double alpha = Math.PI / 4;
-        double phi = Math.PI / 6;   
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(" a     |  x"); 
-        System.out.println("----------------"); 
+        double a, omega, fi, h, k, l;
 
-        for (double a = k; a <= l; a += h) {
-            double x = a * Math.sin(alpha + phi);
-            System.out.printf("%.2f  |  %.4f%n", a, x); //%.2f це форматування для числа з плаваючою комою, де після десяткової крапки виводиться два знаки.
-// %n - переносить виведення на новий рядок.
-// printf - метод, який дозволяє виводити дані з форматуванням. У нашому випадку це %.2f - виведення числа з плаваючою комою з двома знаками після коми.
+        System.out.println("Введите omega: ");
+        omega = sc.nextDouble();
+        System.out.println("Введите fi: ");
+        fi = sc.nextDouble();
+        System.out.println("Введите h: ");
+        h = sc.nextDouble();
+        System.out.println("Введите k: ");
+        k = sc.nextDouble();
+        System.out.println("Введите l: ");
+        l = sc.nextDouble();
+
+        double xmax = 0;
+
+        if (k <= l) {
+            xmax = k - Math.sin(omega + fi);
         }
+
+        for (a = k; a <= l; a += h) {
+            double x = a - Math.sin(omega + fi);
+            System.out.println("a = " + a + ", x = " + x);
+
+            if (x > xmax) {
+                xmax = x;
+            }
+        }
+
+        System.out.println( "x="+ xmax);
+        sc.close();
     }
 }
-    
